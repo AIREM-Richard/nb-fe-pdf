@@ -15,7 +15,7 @@
 
 # 2.针对以上问题的解决方案
 
-<img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/994310822e8c4959b80847e4ccc72cfe~tplv-k3u1fbpfcp-watermark.image?" alt="image.png" width="70%" />
+<img src="https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/994310822e8c4959b80847e4ccc72cfe~tplv-k3u1fbpfcp-watermark.image?" alt="image.png" width="30%" />
 
 ## 方案 1.前端生成 页面转 pdf 工具 + nb-fe-pdf 算法
 
@@ -49,7 +49,7 @@
 
 - nb-fe-pdf 算法是在页面 dom 结构生成完成之后，根据标记，将页面分成一个个模块，计算这些模块的高度，将一个个模块合理的放到 A4 纸中；
 - 类似于拼图游戏，这个拼图游戏是要将一个个模块合理的放到 A4 纸中；
-- 上图例子中，模块 1 可能处于 pdf 页面的尾部，标题 1 和文本 1 可能在上一页，说明 1 可能被分到下一页了， 说明 1 是描述文本 1，我们希望他们放在一起，给模块 1 所在的外层 div 加一个 flag 标记；
+- 上图例子中，模块1 可能处于 pdf 页面的尾部，标题1 和文本1 可能在上一页，说明1 可能被分到下一页了， 说明1 是描述 文本1 的，我们希望他们放在一起，给模块1 所在的外层div加一个 flag 标记；
 - 最终分页问题转化为将一个个 flag，合理的放到 A4 纸中
 
 ### view 层约定-普通模块(高度是固定的）
