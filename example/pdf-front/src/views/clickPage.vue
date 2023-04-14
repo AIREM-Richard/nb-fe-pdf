@@ -10,25 +10,29 @@
       <div v-if="isVisible" id="isPDFVisible"></div>
     </div>
 
-    <el-button style="position: fixed; top: 20px; right: 20px;" type="button"
-      class="el-button el-button--default el-button--small el-button--primary" @click="onClickDownload">
+    <el-button
+      style="position: fixed; top: 20px; right: 20px"
+      type="button"
+      class="el-button el-button--default el-button--small el-button--primary print-hide"
+      @click="onClickDownload"
+    >
       window.print 纯前端 点击下载
     </el-button>
   </div>
 </template>
 
 <script lang="ts">
-import { Component } from 'vue-property-decorator'
-import { mixins } from 'vue-class-component'
-import pdfTpl from './pdfTpl/index.vue'
-import print from './print.vue'
+import { Component } from "vue-property-decorator";
+import { mixins } from "vue-class-component";
+import pdfTpl from "./pdfTpl/index.vue";
+import print from "./print.vue";
 // import { Print } from 'nb-fe-pdf'
-import { Print } from '../../../../index'
-import downloadMixins from './downloadMixins'
-import step from './step/index.vue'
+import { Print } from "../../../../index";
+import downloadMixins from "./downloadMixins";
+import step from "./step/index.vue";
 
 @Component({
-  name: 'clickPage',
+  name: "clickPage",
   components: {
     print,
     pdfTpl,
@@ -36,21 +40,21 @@ import step from './step/index.vue'
   },
 })
 export default class extends mixins(downloadMixins) {
-  isVisible = false
-  islocal = true
-  isResponseSuccess = true
-  show = 0
-  active = 0
-  percentage = 0
+  isVisible = false;
+  islocal = true;
+  isResponseSuccess = true;
+  show = 0;
+  active = 0;
+  percentage = 0;
 
   serverDownload() {
-    this.islocal = false
+    this.islocal = false;
     try {
       // 渲染页面的相关请求
       // await 请求1 请求2....
     } catch (err) {
       // 有JS异常时将isResponseSuccess置为false
-      this.isResponseSuccess = false
+      this.isResponseSuccess = false;
     } finally {
       if (this.isResponseSuccess) {
         // this.onDownload()
@@ -59,43 +63,43 @@ export default class extends mixins(downloadMixins) {
   }
 
   onClickDownload() {
-    this.islocal = true
-    this.onDownload()
+    this.islocal = true;
+    this.onDownload();
   }
 
   onDownload() {
     setTimeout(() => {
-      this.handleGeneratePDF()
+      this.handleGeneratePDF();
       setTimeout(() => {
-        this.isVisible = true
+        this.isVisible = true;
         if (this.islocal) {
-          window.print()
+          window.print();
         }
-      }, 600)
-    }, 500)
+      }, 600);
+    }, 500);
   }
 
   handleGeneratePDF() {
     // 生成PDF相关
     new Print({
       // @ts-ignore
-      moduleId: '#print-operate-report', // 自定义页面id
+      moduleId: "#print-operate-report", // 自定义页面id
       pageInfo: {
-        defaultType: 'HEADER_TYPE', // 页眉页脚类型：HEADER_TYPE  有头无尾；NORMAL_TYPE 无头无尾；FOOTER_TYPE  无头有尾；HEADER_FOOTER_TYPE  有头有尾
+        defaultType: "HEADER_FOOTER_TYPE", // 页眉页脚类型：HEADER_TYPE  有头无尾；NORMAL_TYPE 无头无尾；FOOTER_TYPE  无头有尾；HEADER_FOOTER_TYPE  有头有尾
         needTpl: true,
         waterMark: false, // 是否需要水印, 默认为false
         waterMarkConfig: {
-          waterMarkContent: '前端大喜子-droden',
-          waterMarkId: 'print-operate-report', //需要做水印的元素的id
+          waterMarkContent: "前端大喜子-droden",
+          waterMarkId: "print-operate-report", //需要做水印的元素的id
         },
       },
-    })
+    });
     setTimeout(() => {
-      this.isVisible = true
-    }, 3000)
+      this.isVisible = true;
+    }, 3000);
   }
 }
 </script>
 <style>
-@import 'nb-fe-pdf/print.css';
+@import "nb-fe-pdf/print.css";
 </style>

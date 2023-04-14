@@ -1,6 +1,6 @@
 <template>
   <div class="hello">
-    <h2 style="text-align: left;">模块1 module1 静态模块</h2>
+    <h2 style="text-align: left">模块1 module1 静态模块</h2>
     <p>
       For a guide and recipes on how to configure / customize this project,
       <br />
@@ -120,22 +120,25 @@
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator'
+import { Component, Prop, Vue } from "vue-property-decorator";
 
 @Component
 export default class HelloWorld extends Vue {
-  @Prop() private msg!: string
+  @Prop() private msg!: string;
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.hello {
+  border: 1px solid green;
+}
 h3 {
   margin: 40px 0 0;
 }
 ul {
   list-style-type: none;
-  padding: 0;
+  padding: 20px;
 }
 li {
   display: inline-block;
@@ -143,5 +146,9 @@ li {
 }
 a {
   color: #42b983;
+}
+p {
+  border: 1px solid powderblue;
+  min-height: 300px;
 }
 </style>

@@ -18,7 +18,7 @@ export default class PdfPage {
   tbWraper: Ele = null;
   mainHeigth = 0;
   base = {};
-  pageInfo: PageInfo = {};
+  pageInfo: PageInfo = {} as PageInfo;
   pageHeight = 0;
   headerTplMap = DfsChild.headerTplMap;
   footerTplMap = DfsChild.footerTplMap;

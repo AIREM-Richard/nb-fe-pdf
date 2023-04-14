@@ -140,13 +140,9 @@
 ### 安装
 
 ```js
-nbnpm i nb-fe-pdf -S // nbnpm 下载(内部下载)
-or
 npm install nb-fe-pdf -S // 无法使用nbnpm，可以用npm或yarn
 
 源码地址：
-https://gitlab.newbanker.cn/nbnpm/nb-fe-pdf (内部访问)
-or
 https://www.npmjs.com/package/nb-fe-pdf
 ```
 
@@ -397,7 +393,7 @@ new Print({ // 下载多个模块
 
 ### 添加页眉、页脚、A4 大小图片
 
-引入 css print css 样式 @import 'nb-fe-pdf/print.css';
+引入 print css 样式 @import 'nb-fe-pdf/print.css';
 
 ```
 pageInfo中的defaultType,有以下四种类型

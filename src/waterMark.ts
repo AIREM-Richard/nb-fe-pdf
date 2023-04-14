@@ -18,9 +18,9 @@ function waterMark(markConfig: MarkConfig) {
     waterMarkHeight: 100,
     waterMarkAngle: 15,
   };
-  const settings = Object.assign({}, baseConfig, markConfig);
+  const settings: MarkConfig = Object.assign({}, baseConfig, markConfig);
   if (arguments.length === 1 && typeof arguments[0] === "object") {
-    const src = arguments[0] || {};
+    const src: MarkConfig = arguments[0] || {};
     for (const key in src) {
       if (src[key] && settings[key] && src[key] === settings[key]) continue;
       else if (src[key]) settings[key] = src[key];
@@ -124,10 +124,12 @@ function waterMark(markConfig: MarkConfig) {
       markElement.style.height = "auto !important";
       markElement.style.zIndex = "999999 !important";
       markElement.style.display = "block";
-      markElement.style["pointer-events"] = "none";
+      markElement.style.pointerEvents = "none";
+      if (settings.waterMarkAlpha) {
+        markElement.style.filter =
+          "alpha(opacity=" + settings.waterMarkAlpha * 100 + ")";
+      }
 
-      markElement.style.filter =
-        "alpha(opacity=" + settings.waterMarkAlpha * 100 + ")";
       markElement.setAttribute("class", "markElement");
       tmpObj.appendChild(markElement);
     }
